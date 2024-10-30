@@ -1,17 +1,21 @@
+
+//import java.util.*;
 import java.util.Scanner;
 
 class Weather {
-    public double convertFtoC(int farenheight) {
-        System.out.println("The celcius value is: ");
-        return (farenheight - 32) * 5 / 9;
+    public double convertFtoC(double farenheight) {
+        double result;
+        result = (farenheight - 32) * 5 / 9;
+        System.out.println("The celcius value is: " + result);
+        return 0;
     }
 }
 
 class Numbers {
 
     public double quadratic(double a, double b, double c) {
-        double discriminant = Math.pow(2, b) - 4 * a * c;
-        if (discriminant == 0) {
+        double discriminant = (Math.pow(b, 2)) - (4 * a * c);
+        if (discriminant < 0) {
             System.out.println("No real roots");
             return 0;
         } else if (discriminant == 0) {
@@ -26,20 +30,29 @@ class Numbers {
         return 0;
     }
 
-    public String oddEven(int a) {
-        return (a % 2 == 0) ? "the number is even" : "The number is odd";
+    public int oddEven(int a) {
+        String result;
+        result = (a % 2 == 0) ? "The number is even" : "The number is odd";
+        System.out.println(result);
+        return 0;
+
     }
 
-    public String prime(int a) {
+    public boolean prime(int a) {
         if (a <= 1) {
-            return "Not a prime number";
+            System.out.println("The number " + a + " is not a prime number");
+            return false; // 0 and 1 are not prime numbers
         }
-        for (int i = 2; i <= Math.sqrt(a); i++) {
+
+        for (int i = 2; i <= Math.sqrt(a); i++) { // Check up to the square root of a
             if (a % i == 0) {
-                return "Not a prime number";
+                System.out.println("The number " + a + " is not a prime number");
+                return false; // Found a divisor, not prime
             }
         }
-        return "Prime number";
+
+        System.out.println("The number " + a + " is a prime number");
+        return true; // No divisors found, it is prime
     }
 
     public int swap(int a, int b) {
@@ -57,34 +70,48 @@ public class Exercise {
     public static void main(String[] args) {
         Numbers num = new Numbers();
         Weather weather = new Weather();
-
         Scanner input = new Scanner(System.in);
-        System.out.println("Choose function: ");
-        System.out.println("Check if odd/ even enter 1 ");
-        System.out.println("Check if number is a Prime number enter 2");
-        System.out.println("To Swap two numbers enter 3");
-        System.out.println("To Convert from Farenheight to Celsius press 4");
-        System.out.println("To solve Quadratic equation press 5");
+
+        System.out.println(
+                "Choose function: \n1. Check oddity\n2. Check for Prime\n3. Swap numbers\n4. Convert F to C\n5. Quadratic\n6. Quit");
+
         int select = input.nextInt();
 
         switch (select) {
             case 1:
-                num.oddEven(10);
+                System.out.println("Enter the number you want to check:");
+                int value = input.nextInt();
+                num.oddEven(value);
                 break;
             case 2:
-                num.prime(11);
+                System.out.println("Enter the number you want to check:");
+                int value2 = input.nextInt();
+                num.prime(value2);
                 break;
             case 3:
-                num.swap(10, 20);
+                System.out.println("enter the first value, a: ");
+                int a1 = input.nextInt();
+                System.out.println("enter the first value, b: ");
+                int b2 = input.nextInt();
+                num.swap(a1, b2);
                 break;
             case 4:
-                weather.convertFtoC(32);
+                System.out.println("Enter the temperature in Farenheight:");
+                int temp = input.nextInt();
+                weather.convertFtoC(temp);
                 break;
             case 5:
-                num.quadratic(2, 8, 9);
+                System.out.println("Enter values in the order a, b, c respectively:");
+                int a = input.nextInt();
+                int b = input.nextInt();
+                int c = input.nextInt();
+                num.quadratic(a, b, c);
                 break;
+            case 6:
+                System.out.println("Thank you for using our program");
+                break;
+            default:
+                System.out.println("Invalid Option");
         }
-
     }
-
 }
