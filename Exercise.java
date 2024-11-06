@@ -5,7 +5,9 @@ import java.util.Scanner;
 class Weather {
     public double convertFtoC(double farenheight) {
         double result;
+
         result = (farenheight - 32) * 5 / 9;
+
         System.out.println("The celcius value is: " + result);
         return 0;
     }
@@ -14,7 +16,9 @@ class Weather {
 class Numbers {
 
     public double quadratic(double a, double b, double c) {
+
         double discriminant = (Math.pow(b, 2)) - (4 * a * c);
+
         if (discriminant < 0) {
             System.out.println("No real roots");
             return 0;
@@ -27,18 +31,22 @@ class Numbers {
             System.out.println("the first root is: " + x1);
             System.out.println("The second root is: " + x2);
         }
+
         return 0;
     }
 
     public int oddEven(int a) {
         String result;
+
         result = (a % 2 == 0) ? "The number is even" : "The number is odd";
+
         System.out.println(result);
         return 0;
 
     }
 
     public boolean prime(int a) {
+
         if (a <= 1) {
             System.out.println("The number " + a + " is not a prime number");
             return false; // 0 and 1 are not prime numbers
@@ -56,10 +64,12 @@ class Numbers {
     }
 
     public int swap(int a, int b) {
+
         int c;
         c = a;
         a = b;
         b = c;
+
         System.out.println("a is now " + a + " and b is now " + b);
         return 0;
     }
@@ -68,6 +78,7 @@ class Numbers {
 
 public class Exercise {
     public static void main(String[] args) {
+
         Numbers num = new Numbers();
         Weather weather = new Weather();
         Scanner input = new Scanner(System.in);
